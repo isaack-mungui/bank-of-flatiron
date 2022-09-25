@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Transaction() {
+function Transaction({id}) {
   const [transactions, setTransactions] = useState([])
 
   useEffect(() => {
@@ -13,12 +13,16 @@ function Transaction() {
   }, [])
 
   return (
-    <tr>
-      <td>{transactions.map(transaction => transaction.date)}</td>
-      <td>{transactions.map(transaction => transaction.description)}</td>
-      <td>{transactions.map(transaction => transaction.category)}</td>
-      <td>{transactions.map(transaction => transaction.amount)}</td> 
-    </tr>
+    <div>
+      {transactions.map((transaction) => (
+        <tr>
+          <td key={id}>{transaction.date}</td>
+          <td key={id}>{transaction.description}</td>
+          <td key={id}>{transaction.category}</td>
+          <td key={id}>{transaction.amount}</td> 
+        </tr>
+      ))}
+    </div>
   );
 }
 
